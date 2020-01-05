@@ -1,4 +1,4 @@
-let url = "http://api.icndb.com/jokes/random";
+const url = "http://api.icndb.com/jokes/random";
 
 let button = document.getElementById("get-joke");
 button.addEventListener("click", function() {
@@ -15,6 +15,10 @@ function getJoke() {
     paragraph.innerHTML = response.value.joke;
   });
   xhr.send();
+  xhr.onerror = onError;
+}
+function onError(e) {
+  alert("During download occured " + e.target.status + ".");
 }
 
 document.addEventListener("DOMContentLoaded", function() {
